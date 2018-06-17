@@ -26,6 +26,16 @@ var (
 	version = pflag.BoolP("version", "v", false, "show version info.")
 )
 
+// @title Apiserver Example API
+// @version 1.0
+// @description apiserver demo
+
+// @contact.name lkong
+// @contact.url http://www.swagger.io/support
+// @contact.email 466701708@qq.com
+
+// @host localhost:8080
+// @BasePath /v1
 func main() {
 	pflag.Parse()
 	if *version {
@@ -71,10 +81,6 @@ func main() {
 			log.Fatal("The router has no response, or it might took too long to start up.", err)
 		}
 		log.Info("The router has been deployed successfully.")
-	}()
-
-	go func() {
-		log.Info(http.ListenAndServe(":8088", nil).Error())
 	}()
 
 	// Start to listening the incoming requests.

@@ -8,6 +8,7 @@ import (
 	"apiserver/handler/user"
 	"apiserver/router/middleware"
 
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -28,6 +29,9 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 
 	// swagger api docs
 	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	// pprof router
+	pprof.Register(g)
 
 	// api for authentication functionalities
 	g.POST("/login", user.Login)

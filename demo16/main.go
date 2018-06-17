@@ -73,10 +73,6 @@ func main() {
 		log.Info("The router has been deployed successfully.")
 	}()
 
-	go func() {
-		log.Info(http.ListenAndServe(":8088", nil).Error())
-	}()
-
 	// Start to listening the incoming requests.
 	cert := viper.GetString("tls.cert")
 	key := viper.GetString("tls.key")
